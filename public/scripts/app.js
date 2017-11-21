@@ -1,7 +1,5 @@
 'use strict';
 
-var appRoot = document.getElementById('app');
-
 var app = {
     title: 'Indecision App',
     subtitle: 'Wow, that\'s some app!',
@@ -26,6 +24,10 @@ var removeAll = function removeAll() {
 
     renderApp();
 };
+
+var numbers = [55, 101, 1000];
+
+var appRoot = document.getElementById('app');
 
 var renderApp = function renderApp() {
     var template = React.createElement(
@@ -52,18 +54,20 @@ var renderApp = function renderApp() {
             app.options.length
         ),
         React.createElement(
+            'button',
+            { onClick: removeAll },
+            'Remove All'
+        ),
+        React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'item one'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'item two'
-            )
+            app.options.map(function (item) {
+                return React.createElement(
+                    'li',
+                    { key: item },
+                    item
+                );
+            })
         ),
         React.createElement(
             'form',
@@ -73,11 +77,6 @@ var renderApp = function renderApp() {
                 'button',
                 null,
                 'Add Option'
-            ),
-            React.createElement(
-                'button',
-                { onClick: removeAll },
-                'Remove All'
             )
         )
     );

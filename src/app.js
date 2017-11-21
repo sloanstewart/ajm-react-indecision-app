@@ -1,4 +1,3 @@
-const appRoot = document.getElementById('app');
 
 const app = {
     title: 'Indecision App',
@@ -25,6 +24,11 @@ const removeAll = () => {
     renderApp();
 };
 
+
+const numbers = [55, 101, 1000];
+
+const appRoot = document.getElementById('app');
+
 const renderApp = () => {
     const template = (
         <div>
@@ -32,15 +36,17 @@ const renderApp = () => {
             {app.subtitle && <p>{app.subtitle}</p>}
             <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
             <p>{app.options.length}</p>
+            <button onClick={removeAll}>Remove All</button>
             <ol>
-                <li>item one</li>
-                <li>item two</li>
+                {
+                    app.options.map((item) => {
+                        return <li key={item}>{item}</li>;
+                    })
+                }
             </ol>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option"/>
                 <button>Add Option</button>
-                <button onClick={removeAll}>Remove All</button>
-                
             </form>
         </div>
     );
