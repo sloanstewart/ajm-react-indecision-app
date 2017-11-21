@@ -1,43 +1,43 @@
-
-
-const template = (
-    <div>
-        <h1>Indescision App</h1>
-        <p>sick app, bro.</p>
-        <ol>
-            <li>item one</li>
-            <li>item two</li>
-        </ol>
-    </div>
-);
-
-let count = 0;
-const addOne = () => {
-    count++;
-    renderCounter();
-};
-const subtractOne = () => {
-    count --;
-    renderCounter();
-};
-const reset = () => {
-    count = 0;
-    renderCounter();
-};
-
 const appRoot = document.getElementById('app');
 
-const renderCounter = () => {
-    const templateTwo = (
+const app = {
+    title: 'Indecision App',
+    subtitle: 'Wow, that\'s some app!',
+    options: []
+};
+
+const onFormSubmit = (e) => {
+    e.preventDefault();
+
+    const option = e.target.elements.option.value;
+
+    if(option) {
+        app.options.push(option);
+        e.target.elements.option.value = '';
+
+        renderApp();
+    }
+};
+
+const renderApp = () => {
+    const template = (
         <div>
-            <h1>Count: {count}</h1>
-            <button onClick={addOne}>+1</button>
-            <button onClick={subtractOne}>-1</button>
-            <button onClick={reset}>Reset</button>
+            <h1>{app.title}</h1>
+            {app.subtitle && <p>{app.subtitle}</p>}
+            <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+            <p>{app.options.length}</p>
+            <ol>
+                <li>item one</li>
+                <li>item two</li>
+            </ol>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option"/>
+                <button>Add Option</button>
+            </form>
         </div>
     );
 
-    ReactDOM.render(templateTwo, appRoot);
+    ReactDOM.render(template, appRoot);
 };
 
-renderCounter();
+renderApp();
