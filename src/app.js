@@ -5,7 +5,7 @@ class IndescisionApp extends React.Component {
         this.handlePick = this.handlePick.bind(this);
         this.addOption = this.addOption.bind(this);
         this.state = {
-            options: [] //["stuff", "thangs", "slide in the dms", "eat ya damb vegatables", "make more dank apps"]
+            options: props.options //["stuff", "thangs", "slide in the dms", "eat ya damb vegatables", "make more dank apps"]
         };
     }
 
@@ -42,7 +42,7 @@ class IndescisionApp extends React.Component {
         const subtitle = "ayy lmao";
         return (
             <div>
-                <Header title={title} subtitle={subtitle}/>
+                <Header subtitle={subtitle}/>
                 <Action 
                     hasOptions={this.state.options.length > 0} 
                     handlePick={this.handlePick}
@@ -59,13 +59,21 @@ class IndescisionApp extends React.Component {
     }
 }
 
+IndescisionApp.defaultProps = {
+    options: []
+}
+
 const Header = (props) => {
         return (
             <div>
             <h1>{props.title}</h1>
-            <h2>{props.subtitle}</h2>
+            {props.subtitle && <h2>{props.subtitle}</h2>}
             </div>
         );
+};
+
+Header.defaultProps = {
+    title: "Definitely An Extremely Dank App"
 };
 
 const Action = (props) => {
