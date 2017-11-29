@@ -59,47 +59,40 @@ class IndescisionApp extends React.Component {
     }
 }
 
-class Header extends React.Component {
-    render() {
-        this.props;
+const Header = (props) => {
         return (
             <div>
-            <h1>{this.props.title}</h1>
-            <h2>{this.props.subtitle}</h2>
+            <h1>{props.title}</h1>
+            <h2>{props.subtitle}</h2>
             </div>
         );
-    } 
-}
+};
 
-class Action extends React.Component {
-    render() {
+const Action = (props) => {
         return (
             <div>
                 <button
-                    onClick={this.props.handlePick}
-                    disabled={!this.props.hasOptions}
+                    onClick={props.handlePick}
+                    disabled={!props.hasOptions}
                 >
                 What should I do?
                 </button>
             </div>
         );
-    }
-}
+};
 
-class Options extends React.Component {
-    render() {
+const Options = (props) => {
         return (
             <div>
                 <ol>
                     {
-                        this.props.options.map((option) => <Option key={option} optionText={option} />)
+                        props.options.map((option) => <Option key={option} optionText={option} />)
                     }
                 </ol>
-                <button onClick={this.props.deleteOptions}>Remove All</button>
+                <button onClick={props.deleteOptions}>Remove All</button>
             </div>
-        )
-    }
-}
+        );
+};
 
 class AddOption extends React.Component {
     constructor(props) {
@@ -125,7 +118,7 @@ class AddOption extends React.Component {
             <div>
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.addOption}>
-                    <input type="text" name="option" placeholder="Add an option"/>
+                    <input type="text" name="option" placeholder="Add an option" />
                     <button>Add it!</button>
                 </form>
             </div>
@@ -133,12 +126,22 @@ class AddOption extends React.Component {
     }
 }
 
-class Option extends React.Component {
-    render() {
+const Option = (props) => {
         return (
-            <li>{this.props.optionText}</li>
+            <li>{props.optionText}</li>
         );
-    }
-}
+};
+
+// stateless functional component
+// faster, less overhead than class based component
+
+// const User = (props) => {
+//     return (
+//         <div>
+//             <p>Name: {props.name}</p>
+//             <p>Dank Lvl: {props.dank}</p>
+//         </div>
+//     );
+// };
 
 ReactDOM.render(<IndescisionApp />, document.getElementById('app'));
