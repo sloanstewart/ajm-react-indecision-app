@@ -7,7 +7,7 @@ class IndescisionApp extends React.Component {
         this.deleteOneOption = this.deleteOneOption.bind(this);
 
         this.state = {
-            options: props.options //["stuff", "thangs", "slide in the dms", "eat ya damb vegatables", "make more dank apps"]
+            options: []
         };
     }
 
@@ -84,10 +84,6 @@ class IndescisionApp extends React.Component {
             </div>
         );
     }
-}
-
-IndescisionApp.defaultProps = {
-    options: []
 }
 
 const Header = (props) => {
