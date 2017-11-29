@@ -1331,7 +1331,7 @@ kind-of@^4.0.0:
 
 live-server@^1.2.0:
   version "1.2.0"
-  resolved "https://registry.yarnpkg.com/live-server/-/live-server-1.2.0.tgz#4498644bbf81a66f18dd8dffdef61c4c1c374ca3"
+  resolved "https://npm.artifactory.homedepot.com/artifactory/api/npm/npm/live-server/-/live-server-1.2.0.tgz#4498644bbf81a66f18dd8dffdef61c4c1c374ca3"
   dependencies:
     chokidar "^1.6.0"
     colors latest
