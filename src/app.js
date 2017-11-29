@@ -3,8 +3,9 @@ class IndescisionApp extends React.Component {
         super(props);
         this.deleteOptions = this.deleteOptions.bind(this);
         this.handlePick = this.handlePick.bind(this);
+        this.addOption = this.addOption.bind(this);
         this.state = {
-            options: ["stuff", "thangs", "slide in the dms", "eat ya damb vegatables", "make more dank apps"]
+            options: [] //["stuff", "thangs", "slide in the dms", "eat ya damb vegatables", "make more dank apps"]
         };
     }
 
@@ -22,6 +23,20 @@ class IndescisionApp extends React.Component {
         console.log(option);
     }
 
+    addOption(option) {
+        if (!option) {
+            return 'Enter valid value please.';
+        } else if (this.state.options.indexOf(option) > -1) {
+            return 'This option already exists.';
+        }
+
+        this.setState((prevState) => {
+            return {
+                options: prevState.options.concat( option)
+            }
+        });
+    }
+
     render() {
         const title = "Dank Decision App";
         const subtitle = "ayy lmao";
@@ -36,7 +51,9 @@ class IndescisionApp extends React.Component {
                     options={this.state.options}
                     deleteOptions={this.deleteOptions}
                 />
-                <AddOption />
+                <AddOption 
+                    addOption={this.addOption}
+                />
             </div>
         );
     }
@@ -85,16 +102,28 @@ class Options extends React.Component {
 }
 
 class AddOption extends React.Component {
+    constructor(props) {
+        super(props);
+        this.addOption = this.addOption.bind(this);
+        this.state = {
+            error: undefined
+        };
+    }
     addOption(e) {
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
-        if (option) {
-            console.log({option});
-        }
+        const error = this.props.addOption(option);
+
+        this.setState(() => {
+            return {
+                error // es6 object shorthand for error: error
+            };
+        });
     }
     render() {
         return (
             <div>
+                {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.addOption}>
                     <input type="text" name="option" placeholder="Add an option"/>
                     <button>Add it!</button>
