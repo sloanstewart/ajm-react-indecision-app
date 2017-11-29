@@ -1,12 +1,7 @@
-import { isAdult, canDrink, isSenior } from './person.js';
-import subtract, { square, add} from './utils.js';
+import validator from 'validator';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log('app is running!');
+const template = React.createElement('p', {}, 'test');
 
-console.log(square(40));
-console.log(add(40, 20));
-console.log(subtract(40, 20));
-
-console.log(isAdult(40));
-console.log(canDrink(10));
-console.log(isSenior(10));
+ReactDOM.render(template, document.getElementById('app'));
