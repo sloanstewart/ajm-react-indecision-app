@@ -19,6 +19,8 @@ var IndescisionApp = function (_React$Component) {
         _this.deleteOptions = _this.deleteOptions.bind(_this);
         _this.handlePick = _this.handlePick.bind(_this);
         _this.addOption = _this.addOption.bind(_this);
+        _this.deleteOneOption = _this.deleteOneOption.bind(_this);
+
         _this.state = {
             options: props.options //["stuff", "thangs", "slide in the dms", "eat ya damb vegatables", "make more dank apps"]
         };
@@ -29,8 +31,17 @@ var IndescisionApp = function (_React$Component) {
         key: 'deleteOptions',
         value: function deleteOptions() {
             this.setState(function () {
+                return { options: [] };
+            });
+        }
+    }, {
+        key: 'deleteOneOption',
+        value: function deleteOneOption(optionToRemove) {
+            this.setState(function (prevState) {
                 return {
-                    options: []
+                    options: prevState.options.filter(function (option) {
+                        return optionToRemove !== option;
+                    })
                 };
             });
         }
@@ -71,7 +82,8 @@ var IndescisionApp = function (_React$Component) {
                 }),
                 React.createElement(Options, {
                     options: this.state.options,
-                    deleteOptions: this.deleteOptions
+                    deleteOptions: this.deleteOptions,
+                    deleteOneOption: this.deleteOneOption
                 }),
                 React.createElement(AddOption, {
                     addOption: this.addOption
@@ -131,7 +143,11 @@ var Options = function Options(props) {
             'ol',
             null,
             props.options.map(function (option) {
-                return React.createElement(Option, { key: option, optionText: option });
+                return React.createElement(Option, {
+                    key: option,
+                    optionText: option,
+                    deleteOneOption: props.deleteOneOption
+                });
             })
         ),
         React.createElement(
@@ -202,7 +218,16 @@ var Option = function Option(props) {
     return React.createElement(
         'li',
         null,
-        props.optionText
+        props.optionText,
+        React.createElement(
+            'button',
+            {
+                onClick: function onClick(e) {
+                    props.deleteOneOption(props.optionText);
+                }
+            },
+            'X'
+        )
     );
 };
 
