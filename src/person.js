@@ -1,13 +1,17 @@
-export const isAdult = (age) => {
+const isAdult = (age) => {
     if (age >= 18) {
         return console.log('is adult');
     }
     console.log('not adult');
 }
 
-export const canDrink = (age) => {
+const canDrink = (age) => {
     if (age >= 21) {
         return console.log('can drink');
     }
     console.log('cannot drink');
 }
+
+const isSenior = (age) => age >= 65;
+
+export { isAdult, canDrink, isSenior };

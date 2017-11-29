@@ -69,18 +69,20 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_js__ = __webpack_require__(1);
-// import { isAdult, canDrink } from './person.js';
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__person_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_js__ = __webpack_require__(1);
+
 
 
 console.log('app is running!');
 
-console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["c" /* square */])(40));
-console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */])(40, 20));
-console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* default */])(40, 20));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_1__utils_js__["c" /* square */])(40));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_1__utils_js__["a" /* add */])(40, 20));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_1__utils_js__["b" /* default */])(40, 20));
 
-// console.log(isAdult(40));
-// console.log(canDrink(10));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_0__person_js__["b" /* isAdult */])(40));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_0__person_js__["a" /* canDrink */])(10));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_0__person_js__["c" /* isSenior */])(10));
 
 /***/ }),
 /* 1 */
@@ -96,6 +98,32 @@ const square = (x) => x * x;
 const add = (x, y) => x + y;
 
 const subtract = (a, b) => a - b;
+
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isAdult; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return canDrink; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return isSenior; });
+const isAdult = (age) => {
+    if (age >= 18) {
+        return console.log('is adult');
+    }
+    console.log('not adult');
+}
+
+const canDrink = (age) => {
+    if (age >= 21) {
+        return console.log('can drink');
+    }
+    console.log('cannot drink');
+}
+
+const isSenior = (age) => age >= 65;
 
 
 
