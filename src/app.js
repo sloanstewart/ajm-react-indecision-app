@@ -11,6 +11,18 @@ class IndescisionApp extends React.Component {
         };
     }
 
+    componentDidMount() {
+        console.log('fetching data');
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log('saving data');
+    }
+
+    componentWillUnmount() {
+        console.log('unmounted!');
+    }
+
     deleteOptions() {
         this.setState(() => ({ options: [] }));
     }
@@ -157,7 +169,7 @@ const Option = (props) => {
 };
 
 // stateless functional component
-// faster, less overhead than class based component
+// faster, less overhead than class based component - no state or lifecycle
 
 // const User = (props) => {
 //     return (

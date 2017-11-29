@@ -28,6 +28,21 @@ var IndescisionApp = function (_React$Component) {
     }
 
     _createClass(IndescisionApp, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log('fetching data');
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            console.log('saving data');
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            console.log('unmounted!');
+        }
+    }, {
         key: 'deleteOptions',
         value: function deleteOptions() {
             this.setState(function () {
@@ -232,7 +247,7 @@ var Option = function Option(props) {
 };
 
 // stateless functional component
-// faster, less overhead than class based component
+// faster, less overhead than class based component - no state or lifecycle
 
 // const User = (props) => {
 //     return (
