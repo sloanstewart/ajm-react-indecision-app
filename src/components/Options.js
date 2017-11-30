@@ -3,6 +3,15 @@ import Option from './Option';
 
 const Options = (props) => (
     <div>
+        <div className="widget-header">
+            <h3 className="widget-title__header">Your Options</h3>
+            <button
+                className="button button--link"
+                onClick={props.deleteOptions}
+            >
+                Remove All
+            </button>
+        </div>
         {props.options.length === 0 && <p>No options found. Add an option to get started.</p>}
         <ol>
             {
@@ -15,12 +24,6 @@ const Options = (props) => (
                 ))
             }
         </ol>
-        <button
-            className="button button--link"
-            onClick={props.deleteOptions}
-        >
-            Remove All
-            </button>
     </div>
 );
 
