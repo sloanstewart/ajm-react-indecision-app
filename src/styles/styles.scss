@@ -1,5 +1,2 @@
-$thd-orange: orange;
-
-* {
-    color: $thd-orange;
-}
+@import './base/base';
+@import './components/header';
