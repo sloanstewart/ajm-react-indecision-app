@@ -71,11 +71,9 @@ class IndecisionApp extends React.Component {
     }
 
     render() {
-        const title = "Dank Decision App";
-        const subtitle = "ayy lmao";
         return (
             <div>
-                <Header subtitle={subtitle}/>
+                <Header />
                 <Action 
                     hasOptions={this.state.options.length > 0} 
                     handlePick={this.handlePick}

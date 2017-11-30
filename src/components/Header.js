@@ -10,7 +10,8 @@ const Header = (props) => {
 };
 
 Header.defaultProps = {
-    title: "Definitely An Extremely Dank App"
+    title: "Definitely An Extremely Dank App",
+    subtitle: "Ultimate Championship Edition 2017"
 };
 
 export default Header;
