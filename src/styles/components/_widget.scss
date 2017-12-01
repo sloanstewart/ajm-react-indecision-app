@@ -10,7 +10,7 @@
     margin: 0;
     padding: $l-size;
     text-align: center;
-    border-bottom: 1rem solid lighten($light-blue, 25%);
+    border-bottom: .1rem solid lighten($light-blue, 10%);
 }
 
 // Widget Header
@@ -23,6 +23,6 @@
 
 }
 .widget-title__header {
-    margin: 0;
+    // margin: 0;
 }
 

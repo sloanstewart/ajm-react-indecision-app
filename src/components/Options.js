@@ -12,7 +12,7 @@ const Options = (props) => (
                 Remove All
             </button>
         </div>
-        {props.options.length === 0 && <p>No options found. Add an option to get started.</p>}
+        {props.options.length === 0 && <p className="widget__message">No options found. Add an option to get started.</p>}
         <div>
             {
                 props.options.map((option, index) => (
