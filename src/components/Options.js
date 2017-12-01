@@ -13,17 +13,18 @@ const Options = (props) => (
             </button>
         </div>
         {props.options.length === 0 && <p>No options found. Add an option to get started.</p>}
-        <ol>
+        <div>
             {
-                props.options.map((option) => (
+                props.options.map((option, index) => (
                     <Option 
                         key={option}
                         optionText={option}
+                        count={index +1}
                         deleteOneOption={props.deleteOneOption}
                     />
                 ))
             }
-        </ol>
+        </div>
     </div>
 );
 
